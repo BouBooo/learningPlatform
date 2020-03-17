@@ -14,19 +14,23 @@
         </div>
         <div class="row">
             <div class="courses">
-                <div class="row">
-                    <div class="col-lg-6">
+                @foreach($courses as $course) 
+                <div class="course my-5 row">
+                    <div class="col-lg-5">
                         <div class="about-pic">
-                            <img src="https://www.reachfirst.com/wp-content/uploads/2018/08/Web-Development.jpg" alt="">
+                            <img src="{{ $course->image }}" alt="Course img">
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="about-text">
-                            <h3>The 2019 Conference</h3>
-                            <p>When I first got into the online advertising business, I was looking for the magical combination that would put my website into the top search engine rankings, catapult me to the forefront of the minds or individuals looking to buy my product, and generally make me rich beyond my wildest dreams! After succeeding in the business for this long, I’m able to look back on my old self with this kind of thinking and shake my head. </p>
+                    <div class="col-lg-7">
+                        <div class="about-text pt-0">
+                            <h3>{{ $course->title }}</h3>
+                            <p>{{ $course->subtitle }}</p>
+                            <p>Par <b>{{ $course->user->name }}</b></p>
+                            <span class="tag">{{ $course->category->name }}</span>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>

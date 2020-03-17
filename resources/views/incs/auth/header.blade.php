@@ -42,19 +42,21 @@
         </li>
         <li>
             <a class="nav-link" href="#">
-               <img class="w-25 border-rounded border" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSLRJa7sVqIVz4olQJT_LAiFDkBBm8rhdJCrWVvb0bwX0dGNrVr"/>
+               <img class="w-25 border-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSLRJa7sVqIVz4olQJT_LAiFDkBBm8rhdJCrWVvb0bwX0dGNrVr"/>
             </a>
                 <ul class="dropdown">
                     <li>
-                        <div class="row">
-                            <img class="w-25 border-rounded border" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSLRJa7sVqIVz4olQJT_LAiFDkBBm8rhdJCrWVvb0bwX0dGNrVr"/>
+                        <div class="d-flex justify-content-between py-3 px-3">
+                            <img class="avatar border-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSLRJa7sVqIVz4olQJT_LAiFDkBBm8rhdJCrWVvb0bwX0dGNrVr"/>
                             <div class="user-infos">
-                                <p>{{ Auth::user()->email }}</p>
-                                <p></p>
+                                <p>{{ Auth::user()->name }}</p>
+                                <small>{{ Auth::user()->email }}</small>
                             </div>
                         </div>
                     </li>
-                    <li><a href="{{ route('logout') }}" class=""><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
+                    <div class="dropdown-divider"></div>
+                    <li><a href="#"><i class="fas fa-address-card"></i> Mes informations</a></li>
+                    <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
                 </ul>
         </li>
     </ul>
