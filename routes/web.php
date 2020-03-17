@@ -28,3 +28,12 @@ Route::get('logout', function ()
 })->name('logout');
 
 Route::get('/courses', 'CoursesController@index')->name('courses.index');
+
+
+
+
+/**
+ * Instructor Routes
+ */
+Route::get('/instructor/courses', 'InstructorController@index')->name('instructor.index');
+Route::get('/instructor/course/{id}/manage', 'InstructorController@edit')->name('instructor.courses.edit');

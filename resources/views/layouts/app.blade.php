@@ -27,14 +27,14 @@
 
   
     <!-- Popper js -->
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <!-- Bootstrap js -->
-    <script src="js/jquery.countdown.min.js"></script>
+    <script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
     <!-- All Plugins js -->
-    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
     <!-- Active js -->
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/main.js"></script>  <!-- jQuery-2.2.4 js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script> 
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   </body>
 </html>

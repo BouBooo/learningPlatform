@@ -15,7 +15,7 @@
                         <li class="list-group-item">Écouter des cours en podcast</li>
                         <li class="list-group-item">Regarder des cours avec Chromecast ou l'Apple TV</li>
                     </ul>
-                    <a href="#" class="primary-btn my-5 ">Nous rejoindre</a>
+                    <a href="#" class="primary-btn my-5">Nous rejoindre</a>
                 </div>
             </div>
             <div class="col-lg-5">

@@ -21,7 +21,7 @@
             </form>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('instructor.index') }}">
                 <i class="fas fa-chalkboard-teacher"></i>
                 Formateur
             </a>
@@ -35,9 +35,9 @@
                 Mes cours
             </a>
                 <ul class="dropdown">
-                    <li><a href="#">cours</a></li>
-                    <li><a href="#">cours</a></li>
-                    <li><a href="#">cours</a></li>
+                    @foreach(Auth::user()->courses as $course)
+                    <li><a href="#">{{ $course->title }}</a></li>
+                    @endforeach
                 </ul>
         </li>
         <li>
