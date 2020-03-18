@@ -8,6 +8,10 @@
             <div class="col-lg-12">
                 <div class="section-title">
                     <h2>Cours</h2>
+                    <a href="{{ route('instructor.courses.create') }}" class="primary-btn">
+                        <i class="fas fa-plus"></i>
+                        Nouveau cours
+                    </a>
                 </div>
             </div>
         </div>
@@ -20,7 +24,7 @@
                         <span><i class="fa fa-clock-o"></i> {{ date('d/m/Y', strtotime($course->created_at)) }}</span>
                     </div>
                 </div>
-                <div class="blog-item set-bg" data-setbg="{{ $course->image }}">
+                <div class="blog-item set-bg" data-setbg="/storage/courses/{{ $course->user_id}}/{{ $course->image }}">
                 </div>
                 <div class="btn-actions d-flex justify-content-center">
                     <a href="{{ route('instructor.courses.edit', $course->id) }}" class="primary-btn">

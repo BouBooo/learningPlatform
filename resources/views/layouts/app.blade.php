@@ -21,7 +21,17 @@
   <body>
     <div class="main">
       @include('incs.loader')
-      @include('incs.header')
+
+      @if (Request::is('instructor/*'))
+        @include('incs.instructor.header')
+      @else
+        @include('incs.header')
+      @endif
+
+      <div class="container">
+        @include('incs.messages')
+      </div>
+
       @yield('content')
     </div>
 

@@ -36,7 +36,6 @@ class CoursesSeeder extends Seeder
         $course->price = 49.99;
         $course->image = 'https://www.reachfirst.com/wp-content/uploads/2018/08/Web-Development.jpg';
         $course->slug = $slugify->slugify($course->title);
-        $course->introduction = "Dans cette formation sur Laravel, vous allez apprendre à créer un site ecommerce de A à Z. A la fin de cette formation, vous serez capable de construire et sécuriser votre propre site web, via un système d'authentification.";
         $course->description = "Dans cette formation sur Laravel, vous allez apprendre à créer un site ecommerce de A à Z.
         A la fin de cette formation, vous serez capable de construire et sécuriser votre propre site web, via un système d'authentification.
         Vous apprendrez les notions essentielles de Laravel, telles que le routing, l'utilisation du modèle MVC, la création de Model, l'utilisation d'un moteur de template, la communication avec une base de données etc..
@@ -58,7 +57,6 @@ class CoursesSeeder extends Seeder
         $course->price = 49.99;
         $course->image = 'https://www.reachfirst.com/wp-content/uploads/2018/08/Web-Development.jpg';
         $course->slug = $slugify->slugify($course->title);
-        $course->introduction = "Dans cette formation sur Laravel, vous allez apprendre à créer un site ecommerce de A à Z. A la fin de cette formation, vous serez capable de construire et sécuriser votre propre site web, via un système d'authentification.";
         $course->description = "Dans cette formation sur Laravel, vous allez apprendre à créer un site ecommerce de A à Z.
         A la fin de cette formation, vous serez capable de construire et sécuriser votre propre site web, via un système d'authentification.
         Vous apprendrez les notions essentielles de Laravel, telles que le routing, l'utilisation du modèle MVC, la création de Model, l'utilisation d'un moteur de template, la communication avec une base de données etc..

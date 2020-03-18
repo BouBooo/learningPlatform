@@ -2,29 +2,36 @@
 
 @section('content')
 
-
-@include('incs.instructor.course-sidebar')
+@if ($errors->any())
+    <div class="container alert alert-danger alert-dismissible fade show" role="alert">
+        @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
 
 <!-- Contact Form Section Begin -->
 <section class="contact-from-section spad">
     <div class="container">
         <div class="d-flex justify-content-center">
             <div class="col-lg-8">
-                <form action="{{ route('instructor.courses.update', $course->id) }}" class="comment-form contact-form" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('instructor.courses.store') }}" class="comment-form contact-form" method="POST" enctype="multipart/form-data">
                     @csrf 
-                    @method('PUT')
                     <div class="row">
                         <div class="col-lg-12">
                             <label for="title">Titre du cours</label>
-                            <input type="text" placeholder="Name" name="title" value="{{ $course->title }}">
+                            <input type="text" placeholder="Le titre de votre cours" name="title">
                         </div>
                         <div class="col-lg-12">
                             <label for="subtitle">Sous-titre du cours</label>
-                            <input type="text" placeholder="Email" name="subtitle" value={{ $course->subtitle }}>
+                            <input type="text" placeholder="Le sous-titre de votre cours" name="subtitle">
                         </div>
                         <div class="col-lg-12">
                             <label for="description">Description du cours</label>
-                            <textarea type="textarea" placeholder="Phone" name="description">{{ $course->description }}</textarea>
+                            <textarea type="textarea" placeholder="Qu'allez vous enseigner durant ce cours ? Avec quelles compétences les apprenants repartiront ?" name="description"></textarea>
                         </div>
                         <div class="col-lg-12">
                             <select class="form-control" name="category">
@@ -33,18 +40,15 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 mt-3">
                             <label for="image">Image du cours</label>
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <img src="/storage/courses/{{ $course->user_id}}/{{ $course->image }}"/>
-                                </div>
                                 <div class="col-lg-6">
                                     <input type="file" name="image"/>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 mt-5 d-flex justify-content-center">
+                        <div class="col-lg-12">
                             <button type="submit" class="primary-btn">
                                 <i class="fas fa-save"></i>
                                 Sauvegarder

@@ -18,13 +18,13 @@ class CreateCoursesTable extends Migration
             $table->string('title');
             $table->string('subtitle');
             $table->string('slug');
-            $table->text('introduction');
             $table->text('description');
-            $table->float('price');
+            $table->float('price')->default(0);
             $table->string('image');
             $table->string('video')->default('no');
             $table->integer('category_id');
             $table->integer('user_id');
+            $table->boolean('is_published')->default(false);
             $table->timestamps();
         });
     }

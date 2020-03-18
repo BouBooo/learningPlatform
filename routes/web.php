@@ -37,3 +37,9 @@ Route::get('/courses', 'CoursesController@index')->name('courses.index');
  */
 Route::get('/instructor/courses', 'InstructorController@index')->name('instructor.index');
 Route::get('/instructor/course/{id}/manage', 'InstructorController@edit')->name('instructor.courses.edit');
+Route::put('/instructor/course/{id}/save', 'InstructorController@update')->name('instructor.courses.update');
+Route::get('/instructor/course/new', 'InstructorController@create')->name('instructor.courses.create');
+Route::post('/instructor/course/store', 'InstructorController@store')->name('instructor.courses.store');
+Route::get('/instructor/course/{id}/pricing', 'InstructorController@pricing')->name('instructor.courses.pricing');
+Route::post('/instructor/course/{id}/pricing/store', 'InstructorController@pricingStore')->name('instructor.courses.pricing.store');
+Route::get('/instructor/course/{id}/participants', 'InstructorController@participants')->name('instructor.courses.participants');
