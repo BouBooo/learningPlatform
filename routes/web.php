@@ -27,8 +27,11 @@ Route::get('logout', function ()
     return Redirect::to('/');
 })->name('logout');
 
-Route::get('/courses', 'CoursesController@index')->name('courses.index');
 
+/**
+ * Courses
+ */
+Route::get('/courses', 'CoursesController@index')->name('courses.index');
 Route::get('/courses/{id}', 'CoursesController@show')->name('courses.show');
 
 
@@ -43,3 +46,10 @@ Route::post('/instructor/course/store', 'InstructorController@store')->name('ins
 Route::get('/instructor/course/{id}/pricing', 'InstructorController@pricing')->name('instructor.courses.pricing');
 Route::post('/instructor/course/{id}/pricing/store', 'InstructorController@pricingStore')->name('instructor.courses.pricing.store');
 Route::get('/instructor/course/{id}/participants', 'InstructorController@participants')->name('instructor.courses.participants');
+
+/**
+ * Cart 
+ */
+Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::get('/cart/clear', 'CartController@clear')->name('cart.clear');
+Route::get('/cart/{course}', 'CartController@store')->name('cart.store');

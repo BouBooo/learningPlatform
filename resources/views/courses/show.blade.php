@@ -16,8 +16,6 @@
                         <li>February 21, 2019</li>
                         <li>No Comments</li>
                     </ul>
-                    <h3 class="text-white mt-5">{{ $course->title }}</h3>
-                    <h4 class="text-white">{{ $course->subtitle }}</h4>
                 </div>
             </div>
         </div>
@@ -31,8 +29,14 @@
         <div class="row">
             <div class="col-lg-8 m-auto">
                 <div class="bd-text">
-                    <div class="bd-title">
-                        <p>{{ $course->description }}</p>
+                    <div class="bd-title text-center">
+                        <h3>{{ $course->title }}</h3>
+                        <div class="bd-tag-share">
+                            <div class="tag d-flex justify-content-center">
+                                <a href="#">{{ $course->category->name }}</a>
+                            </div>
+                        </div>
+                        <h4 class="my-5">{{ $course->subtitle }}</h4>
                     </div>
                     <div class="bd-quote">
                         <p>As a result of your work, the senior leadership team walked away as a cohesive unit,
@@ -42,130 +46,55 @@
                         <img src="img/quote-left.png" alt="">
                     </div>
                     <div class="bd-more-text">
-                        <h4>Free Classifieds Using Them To Promote Your Stuff Online</h4>
-                        <p>Postcards are also viable ways to generate increased contact for your business but
-                            because business cards are handier and easier to fit into a wallet or a business file
-                            organizer, they are more certain to be carried anywhere and anytime. Moreover, what is
-                            printed on the card is as important as to how the information is printed. A business
-                            card should have the name and the logo of the company or business, the slogan or motto
-                            of the company, the contact person, contact numbers or cell phone numbers, the business
-                            website, and if possible, a physical address.</p>
+                        <p>{{ $course->description }}</p>
                     </div>
                     <div class="bd-more-pic">
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="img/blog/blog-details/blog-more-1.jpg" alt="">
+                                <img src="/storage/courses/{{ $course->user_id }}/{{ $course->image }}" alt="">
                             </div>
                             <div class="col-md-6">
-                                <img src="img/blog/blog-details/blog-more-2.jpg" alt="">
+                                    <div class="price-item top-rated">
+                                        <div class="tr-tag">
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <div class="pi-price mt-5">
+                                            <h2><span>€</span>{{ $course->price }}</h2>
+                                        </div>
+                                        <a href="{{ route('cart.store', $course->id) }}" class="price-btn">M'inscrire <i class="fas fa-arrow-right"></i></a>
+                                    </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="bd-more-text second-text">
-                        <h4>Freelance Design Tricks How To Get Away With Murder In The Workplace</h4>
-                        <p>Any business should never underestimate the power of business cards. It is able to
-                            provide quick information, is easy to keep, and if optimized to the fullest, can
-                            generate impressive sales increase.</p>
-                        <p>Even the empty space at the back of a card can be utilized to hold additional information
-                            like a map or an attractive freebie. Business cards can surely help any business to be
-                            more well-known and profitable in the long run.</p>
-                    </div>
-                    <div class="bd-tag-share">
-                        <div class="tag">
-                            <a href="#">Marketing</a>
-                            <a href="#">Experience</a>
-                        </div>
-                        <div class="s-share">
-                            <span>Share:</span>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Blog Details Section End -->
 
-<!-- Comment Form Section Begin -->
-<div class="comment-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h3>Leave A Comment</h3>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8 m-auto">
-                <form action="#" class="comment-form">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <input type="text" placeholder="Name">
-                        </div>
-                        <div class="col-lg-4">
-                            <input type="text" placeholder="Email">
-                        </div>
-                        <div class="col-lg-4">
-                            <input type="text" placeholder="Phone">
-                        </div>
-                        <div class="col-lg-12 text-center">
-                            <textarea placeholder="Messages"></textarea>
-                            <button type="submit" class="site-btn">Send Message</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Comment Form Section End -->
 
-<!-- Related Post Section Begin -->
 <section class="related-post-section spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Relatest Post</h2>
+                    <h2>Ces cours peuvent vous intéresser</h2>
                 </div>
             </div>
         </div>
         <div class="row">
+            @foreach($recommendations as $item)
             <div class="col-md-4">
-                <div class="blog-item set-bg" data-setbg="img/related-post/related-post-1.jpg">
-                    <div class="bi-tag bg-gradient">Foody</div>
+                <div class="blog-item set-bg" data-setbg="/storage/courses/{{ $item->user_id }}/{{ $item->image }}">
+                    <div class="bi-tag bg-gradient">{{ $item->category->name }}</div>
                     <div class="bi-text">
-                        <h5><a href="#">Free Classifiends Using Them To Promote</a></h5>
+                        <h5><a href="#">{{ $item->title }}</a></h5>
                         <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="blog-item set-bg" data-setbg="img/related-post/related-post-2.jpg">
-                    <div class="bi-tag bg-gradient">Foody</div>
-                    <div class="bi-text">
-                        <h5><a href="#">Discover Your Path To Success Part 4</a></h5>
-                        <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-item set-bg" data-setbg="img/related-post/related-post-3.jpg">
-                    <div class="bi-tag bg-gradient">Foody</div>
-                    <div class="bi-text">
-                        <h5><a href="#">Importance Of The Custom Company Logo Design</a></h5>
-                        <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
-<!-- Related Post Section End -->
-
 @endsection

@@ -33,6 +33,8 @@
       </div>
 
       @yield('content')
+
+      @include('incs.footer')
     {{-- </div> --}}
 
   

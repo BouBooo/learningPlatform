@@ -17,8 +17,10 @@ class CoursesController extends Controller
 
     public function show($id) {
         $course = Course::find($id);
+        $recommendations = Course::where('category_id', $course->category_id)->where('id', '!=', $course->id)->limit(3)->get();
         return view('courses.show', [
-            'course' => $course
+            'course' => $course,
+            'recommendations' => $recommendations
         ]);
     }
 }
