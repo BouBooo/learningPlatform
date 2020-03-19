@@ -18,7 +18,10 @@
                 <div class="course my-5 row">
                     <div class="col-lg-5">
                         <div class="about-pic">
-                            <img src="{{ $course->image }}" alt="Course img">
+                            
+                    <a href="{{ route('courses.show', $course->id) }}">
+                            <img src="/storage/courses/{{ $course->user_id }}/{{ $course->image }}" alt="Course img">
+                    </a>
                         </div>
                     </div>
                     <div class="col-lg-7">
@@ -29,6 +32,7 @@
                             <span class="tag">{{ $course->category->name }}</span>
                         </div>
                     </div>
+                
                 </div>
                 @endforeach
             </div>

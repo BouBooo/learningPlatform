@@ -36,11 +36,14 @@ class InstructorController extends Controller
         $slugify = new Slugify();
         $categoryId = $request->request->get('category');
 
-        $fullFileName = $request->file('image')->getClientOriginalName();
-        $fileName = pathinfo($fullFileName, PATHINFO_FILENAME);
-        $extension = $request->file('image')->getClientOriginalExtension();
-        $file = $fileName . '_' . time() . '.'. $extension;
-        $request->file('image')->storeAs('public/courses/' . Auth::user()->id, $file);
+        if($request->file('image')) {
+            $fullFileName = $request->file('image')->getClientOriginalName();
+            $fileName = pathinfo($fullFileName, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $file = $fileName . '_' . time() . '.'. $extension;
+            $request->file('image')->storeAs('public/courses/' . Auth::user()->id, $file);
+            $course->image = $file;
+        }
 
 
         $course->title = $request->request->get('title');
@@ -49,7 +52,6 @@ class InstructorController extends Controller
         $course->description = $request->request->get('description');
         $course->category_id = Category::find($categoryId)->id;
         $course->user_id = Auth::user()->id;
-        $course->image = $file;
         $course->save();
 
         return redirect()->route('instructor.courses.edit', $course->id)->with('success', 'Vos modifications ont bien été appliquées.');

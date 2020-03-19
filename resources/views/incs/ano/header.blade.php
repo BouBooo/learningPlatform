@@ -21,7 +21,7 @@
             </form>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('instructor.index') }}">
                 <i class="fas fa-chalkboard-teacher"></i>
                 Formateur
             </a>

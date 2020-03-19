@@ -29,11 +29,12 @@
                         <div class="col-lg-12">
                             <select class="form-control" name="category">
                                 @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                {{-- {{ dd($key, $course->category_id)}} --}}
+                                <option value="{{ $category->id }}" {{($course->category_id == $category->id) ? 'selected' : ''}}>{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 mt-5">
                             <label for="image">Image du cours</label>
                             <div class="row">
                                 <div class="col-lg-6">

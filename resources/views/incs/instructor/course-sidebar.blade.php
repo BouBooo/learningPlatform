@@ -1,5 +1,7 @@
 <!-- Side navigation -->
 <div class="sidenav">
+    <a class="no-attributes" href="{{ route('instructor.index') }}"><span class="h3"><i class="fas fa-arrow-left"></i> Retour aux cours</span></a>
+    <hr>
     <h3 class="px-3 text-white">Modification du cours</h3>
     <a href="#">Ciblez vos participants</a>
     <a href="#">Programme</a>

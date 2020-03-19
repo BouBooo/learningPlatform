@@ -19,7 +19,7 @@
     <title>Learning</title>
   </head>
   <body>
-    <div class="main">
+    {{-- <div class="main"> --}}
       @include('incs.loader')
 
       @if (Request::is('instructor/*'))
@@ -33,7 +33,7 @@
       </div>
 
       @yield('content')
-    </div>
+    {{-- </div> --}}
 
   
     <!-- Popper js -->

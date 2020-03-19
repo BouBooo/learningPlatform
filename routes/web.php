@@ -29,7 +29,7 @@ Route::get('logout', function ()
 
 Route::get('/courses', 'CoursesController@index')->name('courses.index');
 
-
+Route::get('/courses/{id}', 'CoursesController@show')->name('courses.show');
 
 
 /**
