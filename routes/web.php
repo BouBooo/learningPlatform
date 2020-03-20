@@ -17,8 +17,6 @@ Route::get('/', 'MainController@home')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('logout', function ()
 {
     auth()->logout();
@@ -53,3 +51,11 @@ Route::get('/instructor/course/{id}/participants', 'InstructorController@partici
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::get('/cart/clear', 'CartController@clear')->name('cart.clear');
 Route::get('/cart/{course}', 'CartController@store')->name('cart.store');
+Route::get('/cart/{course}/destroy', 'CartController@destroy')->name('cart.destroy');
+
+/**
+ * Wish List
+ */
+Route::get('/wishlist/{course}', 'WishListController@store')->name('wishlist.store');
+Route::get('/wishlist/{course}/destroy', 'WishListController@destroy')->name('wishlist.destroy');
+Route::get('/wishlist/{course}/switch', 'WishListController@switchToCart')->name('wishlist.switch');

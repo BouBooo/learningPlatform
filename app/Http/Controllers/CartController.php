@@ -30,6 +30,10 @@ class CartController extends Controller
     {
         
         $course = Course::find($id);
+        foreach(\Cart::session(Auth::user()->id)->getContent()->toArray() as $item) {
+            if($course->id === $item['id']) return redirect()->route('cart.index');
+        }
+
         $add = \Cart::session(Auth::user()->id)->add([
             'id' => $course->id,
             'name' => $course->title,
@@ -52,29 +56,6 @@ class CartController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -82,7 +63,8 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \Cart::session(Auth::user()->id)->remove($id);
+        return redirect()->route('cart.index')->with('success', 'Cours supprimé de votre panier.');
     }
 
     public function clear() {

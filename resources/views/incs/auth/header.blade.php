@@ -1,7 +1,7 @@
 <nav class="mainmenu mobile-menu">
     <ul>
         <li class="active">
-            <a href="#">
+            <a href="{{ route('home') }}">
                 <i class="fas fa-home"></i>
                 Accueil
             </a>
@@ -39,6 +39,70 @@
                     <li><a href="#">{{ $course->title }}</a></li>
                     @endforeach
                 </ul>
+        </li>
+        <li>
+            <a href="{{ route('cart.index') }}">
+                <i class="fas fa-heart"></i>
+                @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
+                <span class="badge badge-pill badge-danger">{{ count(\Cart::session(Auth::user()->id)->getContent()) }}</span>
+               @endif
+            </a>
+            @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
+            <ul class="dropdown px-2 py-2">
+                @foreach(\Cart::session(Auth::user()->id)->getContent() as $item) 
+                <li>
+                    <div class="d-flex">
+                        <img class="avatar border-rounded" src="/storage/courses/{{ $item->model->user_id }}/{{ $item->model->image }}"/>
+                        <div class="user-infos ml-3">
+                            <small>{{ $item->model->title }}</small>
+                            <p class="text-danger">{{ $item->price}} €</p>
+                        </div>
+                    </div>
+                </li>
+                @endforeach
+            </ul>
+            @else 
+            <ul class="dropdown px-2 py-2 text-center">
+                <li>
+                    <div class="empty-cart">
+                        <p>Votre panier est vide.</p>
+                        <a class="btn btn-link" href="{{ route('courses.index') }}">Continuez vos achats</a>
+                    </div>
+                </li>
+            </ul>
+            @endif
+        </li>
+        <li>
+            <a href="{{ route('cart.index') }}">
+                <i class="fas fa-shopping-cart"></i>
+                @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
+                <span class="badge badge-pill badge-danger">{{ count(\Cart::session(Auth::user()->id)->getContent()) }}</span>
+               @endif
+            </a>
+            @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
+            <ul class="dropdown px-2 py-2">
+                @foreach(\Cart::session(Auth::user()->id)->getContent() as $item) 
+                <li>
+                    <div class="d-flex">
+                        <img class="avatar border-rounded" src="/storage/courses/{{ $item->model->user_id }}/{{ $item->model->image }}"/>
+                        <div class="user-infos ml-3">
+                            <small>{{ $item->model->title }}</small>
+                            <p class="text-danger">{{ $item->price}} €</p>
+                        </div>
+                    </div>
+                </li>
+                @endforeach
+            </ul>
+            @else 
+            <ul class="dropdown px-2 py-2 text-center">
+                <li>
+                    <div class="empty-cart">
+                        <p>Votre panier est vide.</p>
+                        <a class="btn btn-link" href="{{ route('courses.index') }}">Continuez vos achats</a>
+                    </div>
+                </li>
+            </ul>
+            @endif
         </li>
         <li>
             <a class="nav-link" href="#">
