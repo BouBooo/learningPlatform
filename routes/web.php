@@ -60,3 +60,10 @@ Route::get('/cart/{course}/destroy', 'CartController@destroy')->name('cart.destr
 Route::get('/wishlist/{course}', 'WishListController@store')->name('wishlist.store');
 Route::get('/wishlist/{course}/destroy', 'WishListController@destroy')->name('wishlist.destroy');
 Route::get('/wishlist/{course}/switch', 'WishListController@switchToCart')->name('wishlist.switch');
+
+/**
+ * ForLater
+ */
+Route::get('/forLater/{course}', 'SaveForLaterController@store')->name('forLater.store');
+Route::get('/forLater/{course}/destroy', 'SaveForLaterController@destroy')->name('forLater.destroy');
+Route::get('/forLater/{course}/switch', 'SaveForLaterController@switchToCart')->name('forLater.switch');

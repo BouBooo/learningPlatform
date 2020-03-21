@@ -24,7 +24,7 @@ class WishListController extends Controller
     {
         $course = Course::find($id);
         $this->cart->getInstance(Auth::user()->id.'wishlist')->remove($id);
-        $wishlist = $this->cart->getInstance(Auth::user()->id)->add([
+        $add = $this->cart->getInstance(Auth::user()->id)->add([
             'id' => $course->id,
             'name' => $course->title,
             'price' => $course->price,

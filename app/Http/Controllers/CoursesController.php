@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Course;
+use App\Category;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {
     public function index() {
         $courses = Course::all();
+        $categories = Category::all();
         return view('courses.index', [
-            'courses' => $courses
+            'courses' => $courses,
+            'categories' => $categories
         ]);
     }
 
@@ -24,7 +27,10 @@ class CoursesController extends Controller
         ]);
     }
 
-    public function category() {
-        return view('courses.category');
+    public function category($id) {
+        $category = Category::find($id);
+        return view('courses.category', [
+            'category' => $category
+        ]);
     }
 }

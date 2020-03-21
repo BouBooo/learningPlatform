@@ -23,7 +23,7 @@
                                 <td><p><b>{{ $course->name }}</b></p><p>Par {{ $course->model->user->name }}</p></td>
                                 <td class="text-left">
                                     <small><a class="btn border" href="{{ route('cart.destroy', $course->id) }}">Supprimer</a></small><br>
-                                    <small><a class="btn border" href="#">Enregistrer pour plus tard</a></small><br>
+                                    <small><a class="btn border" href="{{ route('forLater.store', $course->id) }}">Enregistrer pour plus tard</a></small><br>
                                     <small><a class="btn border" href="{{ route('wishlist.store', $course->id) }}">Ajouter à la liste de souhaits</a></small>
                                 </td>
                                 <td class="text-right">{{ $course->price }} €</td>
@@ -74,9 +74,29 @@
         </div>
         @endif
     </div>
-    <div class="save-for-later my-5">
+    <div class="save-for-later jumbotron my-5">
         <h3>Enregistré pour plus tard</h3>
+        @if(count(\Cart::session(Auth::user()->id.'later')->getContent()) > 0)
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tbody>
+                    @foreach(\Cart::session(Auth::user()->id.'later')->getContent() as $item)
+                    <tr>
+                        <td><img class="cart-img" src="/storage/courses/{{ $item->model->user_id }}/{{ $item->model->image }}" /> </td>
+                        <td><p><b>{{ $item->name }}</b></p><p>Par {{ $item->model->user->name }}</p></td>
+                        <td class="text-left">
+                            <small><a class="btn border" href="{{ route('forLater.destroy', $item->id) }}">Supprimer</a></small><br>
+                            <small><a class="btn border" href="{{ route('forLater.switch', $item->id) }}">Ajouter au panier</a></small>
+                        </td>
+                        <td class="text-right">{{ $item->price }} €</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        @else
         <p>Vous n'avez ajouté aucun cours à votre liste de souhaits.</p>
+        @endif
     </div>
     <div class="wish-list jumbotron pt-3">
         <h3 class="my-3">Récemment ajouté à la liste de souhaits</h3>

@@ -131,3 +131,17 @@ footer a {
   max-width: 85px;
   max-height: 85px;
 }
+
+.thumb {
+  height:250px;
+  width:100%;
+}
+
+.jumbotron__expanded, .jumbotron__collapsed, .jumbotron--topic {
+  background: linear-gradient(220deg,#EC5252 -30%,#6E1A52 70%);
+  color: #fff;
+  min-height: 250px;
+  margin-bottom: -150px;
+  padding-top: 32px;
+  transition: min-height .3s ease;
+}

@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Managers\CartInstancesManager;
 
 class SaveForLaterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    private $cart;
+
+    public function __construct(CartInstancesManager $cart) {
+        $this->cart = $cart;
     }
 
     /**
@@ -21,9 +20,18 @@ class SaveForLaterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function switchToCart($id)
     {
-        //
+        $course = Course::find($id);
+        $this->cart->getInstance(Auth::user()->id.'later')->remove($id);
+        $add = $this->cart->getInstance(Auth::user()->id)->add([
+            'id' => $course->id,
+            'name' => $course->title,
+            'price' => $course->price,
+            'quantity' => 1,
+            'associatedModel' => $course
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -32,43 +40,20 @@ class SaveForLaterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id)
     {
-        //
-    }
+        $this->cart->getInstance(Auth::user()->id)->remove($id);
+        $course = Course::find($id);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        // New cart instance for later
+        $forLater = $this->cart->getInstance(Auth::user()->id.'later')->add([
+            'id' => $course->id,
+            'name' => $course->title,
+            'price' => $course->price,
+            'quantity' => 1,
+            'associatedModel' => $course
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -79,6 +64,7 @@ class SaveForLaterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->cart->getInstance(Auth::user()->id.'later')->remove($id);
+        return redirect()->back();
     }
 }

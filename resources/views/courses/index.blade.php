@@ -12,19 +12,27 @@
                 </div>
             </div>
         </div>
+        <div class="bd-title text-center">
+            <div class="bd-tag-share">
+                <div class="tag d-flex justify-content-around">
+                    @foreach($categories as $category)
+                        <a class="primary-btn" href="{{ route('courses.category', $category->id) }}">{{ $category->name }}</a>
+                    @endforeach
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="courses">
                 @foreach($courses as $course) 
                 <div class="course my-5 row">
-                    <div class="col-lg-5">
+                    <div class="col-lg-4">
                         <div class="about-pic">
-                            
-                    <a href="{{ route('courses.show', $course->id) }}">
-                            <img src="/storage/courses/{{ $course->user_id }}/{{ $course->image }}" alt="Course img">
-                    </a>
+                            <a href="{{ route('courses.show', $course->id) }}">
+                                <img src="/storage/courses/{{ $course->user_id }}/{{ $course->image }}" alt="Course img">
+                            </a>
                         </div>
                     </div>
-                    <div class="col-lg-7">
+                    <div class="col-lg-6">
                         <div class="about-text pt-0">
                             <h3>{{ $course->title }}</h3>
                             <p>{{ $course->subtitle }}</p>
@@ -32,7 +40,9 @@
                             <span class="tag">{{ $course->category->name }}</span>
                         </div>
                     </div>
-                
+                    <div class="col-lg-2">
+                        <b>{{ $course->price }} €</b>
+                    </div>
                 </div>
                 @endforeach
             </div>

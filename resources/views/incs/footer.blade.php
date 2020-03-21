@@ -1,5 +1,5 @@
 <!-- Footer Section Begin -->
-<footer class="footer-section">
+<footer class="footer-section mt-5">
     <div class="container">
         <div class="partner-logo owl-carousel">
             <a href="#" class="pl-table">

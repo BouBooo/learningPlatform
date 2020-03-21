@@ -16,7 +16,6 @@ class CartController extends Controller
      */
     public function index()
     {
-        // dd(\Cart::session(Auth::user()->id)->getContent());
         return view('cart.index');
     }
 
@@ -42,17 +41,6 @@ class CartController extends Controller
             'associatedModel' => $course
         ]);
         return redirect()->route('cart.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
