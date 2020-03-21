@@ -23,4 +23,8 @@ class CoursesController extends Controller
             'recommendations' => $recommendations
         ]);
     }
+
+    public function category() {
+        return view('courses.category');
+    }
 }

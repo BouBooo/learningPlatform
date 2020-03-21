@@ -11,6 +11,16 @@
                 <i class="fas fa-ellipsis-v"></i>
                 Suivre un cours
             </a>
+            <ul class="dropdown px-2 py-3">
+                @foreach(App\Category::all() as $category)
+                <li>
+                    <a href="{{ route('courses.category', $category->id) }}">
+                    {!! $category->icon !!}
+                    {{ $category->name }}
+                    </a>
+                </li>
+                @endforeach
+            </ul>
         </li>
         <li>
             <!-- Search form -->
@@ -42,7 +52,7 @@
         </li>
         <li>
             <a href="{{ route('cart.index') }}">
-                <i class="fas fa-heart"></i>
+                <i class="fas fa-shopping-cart"></i>
                 @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
                 <span class="badge badge-pill badge-danger">{{ count(\Cart::session(Auth::user()->id)->getContent()) }}</span>
                @endif
@@ -74,14 +84,14 @@
         </li>
         <li>
             <a href="{{ route('cart.index') }}">
-                <i class="fas fa-shopping-cart"></i>
-                @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
-                <span class="badge badge-pill badge-danger">{{ count(\Cart::session(Auth::user()->id)->getContent()) }}</span>
+                <i class="fas fa-heart"></i>
+                @if(count(\Cart::session(Auth::user()->id.'wishlist')->getContent()) > 0)
+                <span class="badge badge-pill badge-danger">{{ count(\Cart::session(Auth::user()->id.'wishlist')->getContent()) }}</span>
                @endif
             </a>
-            @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
+            @if(count(\Cart::session(Auth::user()->id.'wishlist')->getContent()) > 0)
             <ul class="dropdown px-2 py-2">
-                @foreach(\Cart::session(Auth::user()->id)->getContent() as $item) 
+                @foreach(\Cart::session(Auth::user()->id.'wishlist')->getContent() as $item) 
                 <li>
                     <div class="d-flex">
                         <img class="avatar border-rounded" src="/storage/courses/{{ $item->model->user_id }}/{{ $item->model->image }}"/>
@@ -97,8 +107,8 @@
             <ul class="dropdown px-2 py-2 text-center">
                 <li>
                     <div class="empty-cart">
-                        <p>Votre panier est vide.</p>
-                        <a class="btn btn-link" href="{{ route('courses.index') }}">Continuez vos achats</a>
+                        <p>Votre liste de souhaits est vide.</p>
+                        <a class="btn btn-link" href="{{ route('courses.index') }}">Découvrez les cours</a>
                     </div>
                 </li>
             </ul>

@@ -31,6 +31,7 @@ Route::get('logout', function ()
  */
 Route::get('/courses', 'CoursesController@index')->name('courses.index');
 Route::get('/courses/{id}', 'CoursesController@show')->name('courses.show');
+Route::get('/courses/category/{id}', 'CoursesController@category')->name('courses.category');
 
 
 /**
