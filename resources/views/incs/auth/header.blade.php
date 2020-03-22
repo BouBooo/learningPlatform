@@ -40,7 +40,7 @@
             </ul>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('participant.courses') }}">
                 <i class="fas fa-book"></i>
                 Mes cours
             </a>

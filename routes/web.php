@@ -47,6 +47,12 @@ Route::post('/instructor/course/{id}/pricing/store', 'InstructorController@prici
 Route::get('/instructor/course/{id}/participants', 'InstructorController@participants')->name('instructor.courses.participants');
 
 /**
+ * Participant
+ */
+Route::get('/participant/courses', 'ParticipantController@courses')->name('participant.courses');
+
+
+/**
  * Cart 
  */
 Route::get('/cart', 'CartController@index')->name('cart.index');
@@ -67,3 +73,10 @@ Route::get('/wishlist/{course}/switch', 'WishListController@switchToCart')->name
 Route::get('/forLater/{course}', 'SaveForLaterController@store')->name('forLater.store');
 Route::get('/forLater/{course}/destroy', 'SaveForLaterController@destroy')->name('forLater.destroy');
 Route::get('/forLater/{course}/switch', 'SaveForLaterController@switchToCart')->name('forLater.switch');
+
+/**
+ * Checkout
+ */
+Route::get('/checkout', 'CheckoutController@paiement')->name('checkout.paiement');
+Route::post('/checkout/charge', 'CheckoutController@charge')->name('checkout.charge');
+Route::get('/checkout/success', 'CheckoutController@success')->name('checkout.success');

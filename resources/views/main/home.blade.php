@@ -226,7 +226,6 @@
         </div>
         <div class="row">
             @foreach($courses as $course)
-            {{-- @dump($course['visible_instructors'][0]) --}}
             <div class="col-lg-6">
                 <div class="latest-item set-bg" data-setbg="{{ $course['image_480x270'] }}">
                     <div class="li-tag">{{ $course['price'] }}</div>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('css/elegant-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
@@ -35,6 +36,9 @@
       @yield('content')
 
       @include('incs.footer')
+
+      <script src="https://js.stripe.com/v3/"></script>
+      @yield('stripe')
     {{-- </div> --}}
 
   

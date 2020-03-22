@@ -58,7 +58,7 @@
                         <a href="{{ route('courses.index') }}" class="btn btn-block btn-light">Continuer vos achats</a href="{{ route('courses.index') }}">
                     </div>
                     <div class="col-sm-12 col-md-6 text-right">
-                        <button class="btn btn-lg btn-block btn-success text-uppercase">Payer</button>
+                        <a href="{{ route('checkout.paiement') }}" class="btn btn-lg btn-block btn-success text-uppercase">Payer</a>
                     </div>
                 </div>
             </div>
