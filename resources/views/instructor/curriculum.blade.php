@@ -11,7 +11,7 @@
             <div class="col-lg-8">
                 <h3 class="mb-5">Programme</h3>
         
-                <form id="form" action="{{ route('instructor.courses.curriculum.store', $course->id) }}" method="POST">
+                <form id="form" action="{{ route('instructor.courses.curriculum.store', $course->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf 
                     <div class="d-flex justify-content-around mb-3">
                         <button id="btn" type="button" onClick="addField()" class="btn btn-dark">
@@ -28,10 +28,10 @@
                             <h4 class="my-3">Exemple :</h4>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input class="form-control" type="text" name="section_name" placeholder="Nom du chapitre"/>
+                                    <input class="form-control" type="text" id="section_name" name="section_name" placeholder="Nom du chapitre"/>
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control" type="file" name="section_video"/>
+                                    <input class="form-control" type="file" id="section_video" name="section_video"/>
                                 </div>
                             </div>
                         </div>
@@ -56,14 +56,16 @@
         p_prime.id = "form-element" + count
         parent = document.getElementById("form")
         parent.appendChild(p_prime)
+        let name = p_prime.querySelector("#section_name")
+        name.name = name.name + count
+        let video = p_prime.querySelector("#section_video")
+        video.name = video.name + count
         count++  
-        console.log(count)
     }
 
     function removeField() {
         var lastChild = document.getElementById("form").lastChild;
         var lastChildID = lastChild.id;
-        console.log(lastChildID)
         var elem = document.getElementById(lastChildID)
         elem.remove()
     }
