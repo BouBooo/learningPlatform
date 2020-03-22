@@ -4,32 +4,32 @@
         <div class="partner-logo owl-carousel">
             <a href="#" class="pl-table">
                 <div class="pl-tablecell">
-                    <img src="img/partner-logo/logo-1.png" alt="">
+                    <img src="{{ asset('img/partner-logo/logo-1.png') }}" alt="">
                 </div>
             </a>
             <a href="#" class="pl-table">
                 <div class="pl-tablecell">
-                    <img src="img/partner-logo/logo-2.png" alt="">
+                    <img src="{{ asset('img/partner-logo/logo-2.png') }}" alt="">
                 </div>
             </a>
             <a href="#" class="pl-table">
                 <div class="pl-tablecell">
-                    <img src="img/partner-logo/logo-3.png" alt="">
+                    <img src="{{ asset('img/partner-logo/logo-3.png') }}" alt="">
                 </div>
             </a>
             <a href="#" class="pl-table">
                 <div class="pl-tablecell">
-                    <img src="img/partner-logo/logo-4.png" alt="">
+                    <img src="{{ asset('img/partner-logo/logo-4.png') }}" alt="">
                 </div>
             </a>
             <a href="#" class="pl-table">
                 <div class="pl-tablecell">
-                    <img src="img/partner-logo/logo-5.png" alt="">
+                    <img src="{{ asset('img/partner-logo/logo-5.png') }}" alt="">
                 </div>
             </a>
             <a href="#" class="pl-table">
                 <div class="pl-tablecell">
-                    <img src="img/partner-logo/logo-6.png" alt="">
+                    <img src="{{ asset('img/partner-logo/logo-6.png') }}" alt="">
                 </div>
             </a>
         </div>

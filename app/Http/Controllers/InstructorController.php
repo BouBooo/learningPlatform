@@ -108,4 +108,15 @@ class InstructorController extends Controller
             'course' => $course
         ]);
     }
+
+    public function curriculum($id) {
+        $course = Course::find($id);
+        return view('instructor.curriculum', [
+            'course' => $course
+        ]);
+    }
+
+    public function curriculumStore(Request $request, $id) {
+        dd($request);
+    }
 }
