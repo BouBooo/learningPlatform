@@ -4,7 +4,7 @@
     <hr>
     <h3 class="px-3 text-white">Modification du cours</h3>
     <a href="#">Ciblez vos participants</a>
-    <a href="{{ route('instructor.courses.curriculum', $course->id) }}">Programme</a>
+    <a href="{{ route('curriculum.index', $course->id) }}">Programme</a>
     <a href="{{ route('instructor.courses.edit', $course->id) }}">Page d'accueil du cours</a>
     <hr>
     <h3 class="px-3 text-white">Gestion du cours</h3>
