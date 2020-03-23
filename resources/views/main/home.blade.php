@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Hero Section Begin -->
-<section class="hero-section set-bg" data-setbg="img/hero.jpg">
+<section class="hero-section set-bg" data-setbg="{{ asset('img/hero.jpg') }}">
     <div class="container">
         <div class="row">
             <div class="col-lg-7">
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="col-lg-5">
-                <img src="img/hero-right.png" alt="">
+                <img src="{{ asset('img/hero-right.png') }}" alt="">
             </div>
         </div>
     </div>

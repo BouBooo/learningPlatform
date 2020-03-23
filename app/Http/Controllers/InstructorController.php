@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Section;
 use App\Category;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
 use App\Http\Requests\CourseRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Managers\ImageUploadManager;
 
 class InstructorController extends Controller
 {
-    public function __construct() {
+    private $uploader;
+
+    public function __construct(ImageUploadManager $uploader) {
+        $this->uploader = $uploader;
         $this->middleware('auth');
     }
 
@@ -117,6 +122,42 @@ class InstructorController extends Controller
     }
 
     public function curriculumStore(Request $request, $id) {
+        $course = Course::find($id);
+        if(count($course->sections) > 0) {
+            return redirect()->route('instructor.courses.curriculum.edit', $course->id); 
+        }
+        $section = new Section();
+        $section->name = $request->request->get('section_name');
+        $video = $this->uploader->storeVideo($request->file('section_video'));
+        $section->video = $video;
+        $section->course_id = $id;
+        $section->save();
+
+        $requestCount = count($request->request);
+        $itemsUploaded = $requestCount - 1;
+
+        for($i = 1; $i <= $itemsUploaded; $i ++) {
+            if ($request->hasFile('section_video'.$i)) {
+                $section = new Section();
+                $section->name = $request->request->get('section_name'.$i);
+                $video = $this->uploader->storeVideo($request->file('section_video'.$i));
+                $section->video = $video;
+                $section->course_id = $id;
+                $section->save();
+            }
+        }
+
+        return redirect()->back()->with('success', 'Votre plan de cours a bien été modifié.');
+    }
+
+    public function curriculumEdit($id) {
+        $course = Course::find($id);
+        return view('instructor.curriculum', [
+            'course' => $course
+        ]);
+    }
+
+    public function curriculumUpdate(Request $request, $id) {
         dd($request);
     }
 }

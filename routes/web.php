@@ -47,6 +47,8 @@ Route::post('/instructor/course/{id}/pricing/store', 'InstructorController@prici
 Route::get('/instructor/course/{id}/participants', 'InstructorController@participants')->name('instructor.courses.participants');
 Route::get('/instructor/course/{id}/curriculum', 'InstructorController@curriculum')->name('instructor.courses.curriculum');
 Route::post('/instructor/course/{id}/curriculum/store', 'InstructorController@curriculumStore')->name('instructor.courses.curriculum.store');
+// Route::get('/instructor/course/{id}/curriculum/edit', 'InstructorController@curriculumEdit')->name('instructor.courses.curriculum.edit');
+// Route::get('/instructor/course/{id}/curriculum/update', 'InstructorController@curriculumUpdate')->name('instructor.courses.curriculum.update');
 
 
 /**
