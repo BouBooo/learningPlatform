@@ -45,14 +45,12 @@ Route::post('/instructor/course/store', 'InstructorController@store')->name('ins
 Route::get('/instructor/course/{id}/pricing', 'InstructorController@pricing')->name('instructor.courses.pricing');
 Route::post('/instructor/course/{id}/pricing/store', 'InstructorController@pricingStore')->name('instructor.courses.pricing.store');
 Route::get('/instructor/course/{id}/participants', 'InstructorController@participants')->name('instructor.courses.participants');
-// Route::get('/instructor/course/{id}/curriculum', 'InstructorController@curriculum')->name('instructor.courses.curriculum');
-// Route::post('/instructor/course/{id}/curriculum/store', 'InstructorController@curriculumStore')->name('instructor.courses.curriculum.store');
-// Route::get('/instructor/course/{id}/curriculum/edit', 'InstructorController@curriculumEdit')->name('instructor.courses.curriculum.edit');
-// Route::get('/instructor/course/{id}/curriculum/update', 'InstructorController@curriculumUpdate')->name('instructor.courses.curriculum.update');
-Route::get('/instuctor/course/{id}/curriculum', 'CurriculumController@index')->name('curriculum.index');
-Route::get('/instuctor/course/{id}/curriculum/add', 'CurriculumController@create')->name('curriculum.create');
-Route::post('/instuctor/course/{id}/curriculum/store', 'CurriculumController@store')->name('curriculum.store');
-Route::get('/instuctor/course/{id}/curriculum/{section}/destroy', 'CurriculumController@destroy')->name('curriculum.destroy');
+Route::get('/instructor/course/{id}/curriculum', 'CurriculumController@index')->name('curriculum.index');
+Route::get('/instructor/course/{id}/curriculum/add', 'CurriculumController@create')->name('curriculum.create');
+Route::post('/instructor/course/{id}/curriculum/store', 'CurriculumController@store')->name('curriculum.store');
+Route::get('/instructor/course/{id}/curriculum/{section}/destroy', 'CurriculumController@destroy')->name('curriculum.destroy');
+Route::get('/instructor/course/{id}/curriculum/{section}/edit', 'CurriculumController@edit')->name('curriculum.edit');
+Route::post('/instructor/course/{id}/curriculum/{section}/update', 'CurriculumController@update')->name('curriculum.update');
 
 
 /**

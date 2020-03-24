@@ -2,77 +2,82 @@
 
 @section('content')
 
-@include('incs.instructor.course-sidebar')
+{{-- @include('incs.instructor.course-sidebar') --}}
 
-<section class="contact-from-section spad">
+ <!-- Schedule Section Begin -->
+ <section class="schedule-section spad">
     <div class="container">
-        <div class="d-flex justify-content-center">
-            <div class="col-lg-10 pl-5 ml-5">
-                <h3 class="text-center mb-5">Programme</h3>    
-                @if(count($course->sections) > 0) 
-                    <div class="text-center">
-                        <a class="btn btn-dark mb-3" href="{{ route('curriculum.create', $course->id) }}">Ajouter une section</a>
-                    </div>
-                    <table class="table table-striped">
-                        <tbody>
-                            @foreach($sections as $section)
-                            <tr>
-                                <th>
-                                    {{ $section->name }}
-                                </th>
-                                <td>
-                                    <video width="350" height="130" controls>
-                                        <source src="{{ asset("storage/courses_sections/$course->user_id/$section->video") }}" type="video/mp4">
-                                    </video>
-                                </td>
-                                <td>
-                                    <a href="{{ route('curriculum.destroy', [
-                                            'id' => $course->id,
-                                            'section' => $section->id
-                                        ]) }}" class="btn btn-danger">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                @else               
-                <div class="text-center">
-                    <p>Votre cours ne contient aucun contenu vidéo.</p>
-                    <a class="btn btn-dark" href="{{ route('curriculum.create', $course->id) }}">Créer ma première section</a>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Programme</h2>
+                    <p>{{ $course->title }}</p>
                 </div>
-                @endif
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="schedule-tab">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            @if(count($course->sections) > 0)
+                            <div class="text-center mb-5">
+                                <a class="primary-btn" href="{{ route('curriculum.create', $course->id) }}">
+                                    <i class="fas fa-plus mr-2"></i>
+                                    Ajouter une section
+                                </a>
+                            </div>
+                                @foreach($course->sections as $section)
+                                <div class="st-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-4 px3 py-3">
+                                                <video width="320" height="180" controls>
+                                                    <source src="{{ asset("storage/courses_sections/$course->user_id/$section->video") }}" type="video/mp4">
+                                                </video>
+                                            </div>
+                                            <div class="col-lg-4 text-left">
+                                                <div class="sc-text">
+                                                    <h4>{{ $section->name }}</h4>
+                                                </div>
+                                                <p>Durée de la section : {{ $section->playtime_seconds }}</p>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="sc-text d-flex justify-content-around">
+                                                    <a class="btn btn-danger" href="{{ route('curriculum.destroy', [
+                                                            'id' => $course->id,
+                                                            'section' => $section->id
+                                                        ]) }}">
+                                                        <i class="fas fa-trash"></i>
+                                                        Supprimer
+                                                    </a>
+                                                    <a class="btn btn-warning" href="{{ route('curriculum.edit', [
+                                                            'id' => $course->id,
+                                                            'section' => $section->id
+                                                        ]) }}">
+                                                        <i class="fas fa-edit"></i>
+                                                        Modifier
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            @else 
+                                <div class="text-center">
+                                    <a class="primary-btn" href="{{ route('curriculum.create', $course->id) }}">
+                                        <i class="fas fa-plus mr-2"></i>
+                                        Ajouter ma première section
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
-
-@stop
-
-@section('stripe')
-
-{{-- <script>
-    let count = 1
-    function addField() {
-        p = document.getElementById("form-element")
-        p_prime = p.cloneNode(true)
-        p_prime.id = "form-element" + count
-        parent = document.getElementById("form")
-        parent.appendChild(p_prime)
-        let name = p_prime.querySelector("#section_name")
-        name.name = name.name + count
-        let video = p_prime.querySelector("#section_video")
-        video.name = video.name + count
-        count++  
-    }
-
-    function removeField() {
-        var lastChild = document.getElementById("form").lastChild;
-        var lastChildID = lastChild.id;
-        var elem = document.getElementById(lastChildID)
-        elem.remove()
-    }
-</script> --}}
 
 @stop

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\CourseVideoRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CourseVideoRequest extends FormRequest

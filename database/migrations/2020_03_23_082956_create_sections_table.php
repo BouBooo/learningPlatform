@@ -17,6 +17,7 @@ class CreateSectionsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('video');
+            $table->string('playtime_seconds');
             $table->unsignedBigInteger('course_id');
             $table->timestamps();
         });

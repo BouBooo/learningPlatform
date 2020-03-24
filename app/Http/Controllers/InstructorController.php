@@ -69,7 +69,7 @@ class InstructorController extends Controller
        ]);
     }
     
-    public function store(CourseRequest $request) {
+    public function store(Request $request) {
         $course = new Course();
         $slugify = new Slugify();
         $categoryId = $request->request->get('category');
