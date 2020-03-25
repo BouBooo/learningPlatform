@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <a href="#" class="primary-btn">
+                        <a href="{{ route('participant.course', $course->slug) }}" class="primary-btn">
                             Continuer
                             <i class="fas fa-arrow-right"></i>
                         </a>

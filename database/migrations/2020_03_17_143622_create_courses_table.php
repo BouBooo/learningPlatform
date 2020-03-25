@@ -19,9 +19,9 @@ class CreateCoursesTable extends Migration
             $table->string('subtitle');
             $table->string('slug');
             $table->text('description');
-            $table->float('price')->default(0);
+            $table->float('price')->nullable();
             $table->string('image');
-            $table->string('video')->default('no');
+            $table->string('video')->nullable();
             $table->integer('category_id');
             $table->integer('user_id');
             $table->boolean('is_published')->default(false);

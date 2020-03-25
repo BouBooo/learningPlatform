@@ -12,9 +12,10 @@
                 </div>
             </div>
         </div>
+        @include('incs.courses.category-banner')
         <div class="row">
             <div class="courses">
-                @foreach($category->courses as $course) 
+                @foreach($courses as $course) 
                 <div class="course my-5 row">
                     <div class="col-lg-4">
                         <div class="about-pic">

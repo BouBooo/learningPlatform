@@ -113,4 +113,14 @@ class InstructorController extends Controller
             'course' => $course
         ]);
     }
+
+    public function publish($id) {
+        $course = Course::find($id);
+        if(!$course->price || count($course->sections) === 0) {
+            return redirect()->back()->with('danger', 'Votre cours doit avoir un tarif de défini, ainsi qu\'au moins 1 section afin d\'être publiable.');
+        }
+        $course->is_published = true;
+        $course->save();
+        return redirect()->back()->with('success', 'Votre cours est maintenant en ligne !');
+    }
 }

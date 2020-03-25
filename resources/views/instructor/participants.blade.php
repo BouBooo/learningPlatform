@@ -1,10 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.instructor-app')
 
 @section('content')
 
-@include('incs.instructor.course-sidebar')
-
-<!-- Contact Form Section Begin -->
 <section class="contact-from-section spad">
     <div class="container">
         <div class="d-flex justify-content-center">

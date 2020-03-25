@@ -1,10 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.instructor-app')
 
 @section('content')
 
-{{-- @include('incs.instructor.course-sidebar') --}}
-
- <!-- Schedule Section Begin -->
  <section class="schedule-section spad">
     <div class="container">
         <div class="row">

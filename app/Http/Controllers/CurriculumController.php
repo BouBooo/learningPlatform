@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Section;
+use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Managers\ImageUploadManager;
@@ -14,8 +15,9 @@ class CurriculumController extends Controller
 {
     private $uploader;
 
-    public function __construct(ImageUploadManager $uploader) {
+    public function __construct(ImageUploadManager $uploader, Slugify $slugify) {
         $this->uploader = $uploader;
+        $this->slugify = $slugify;
         $this->middleware('auth');
     }
 
@@ -60,6 +62,7 @@ class CurriculumController extends Controller
         $section->name = $request->request->get('section_name');
         $video = $this->uploader->storeVideo($request->file('section_video'));
         $section->video = $video;
+        $section->slug = $this->slugify->slugify($section->name);
         $section->course_id = $id;
         $section->playtime_seconds = $this->uploader->getVideoDuration('storage/courses_sections/'.Auth::user()->id.'/'.$video);
         $section->save();
@@ -105,7 +108,10 @@ class CurriculumController extends Controller
         $section = Section::find($sectionId);
         $course = Course::find($id);
 
-        if($request->request->get('section_name')) $section->name = $request->request->get('section_name');
+        if($request->request->get('section_name')) {
+            $section->name = $request->request->get('section_name');
+            $section->slug = $this->slugify->slugify($section->name);
+        }
         if($request->file('section_video'))  {
             $video =  $this->uploader->storeVideo($request->file('section_video'));
             $section->video = $video;

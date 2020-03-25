@@ -8,7 +8,8 @@
             <div class="col-lg-12">
                 <div class="section-title">
                     <h2>Cours</h2>
-                    <a href="{{ route('instructor.courses.create') }}" class="primary-btn">
+                    <p class="mt-3">Dès maitenant, créez votre prochain cours en quelques clics !</p>
+                    <a href="{{ route('instructor.courses.create') }}" class="primary-btn mt-3">
                         <i class="fas fa-plus"></i>
                         Nouveau cours
                     </a>

@@ -1,13 +1,31 @@
-<!-- Side navigation -->
-<div class="sidenav">
-    <a class="no-attributes" href="{{ route('instructor.index') }}"><span class="h3"><i class="fas fa-arrow-left"></i> Mes cours</span></a>
-    <hr>
-    <h3 class="px-3 text-white">Modification</h3>
-    <a href="{{ route('curriculum.index', $course->id) }}">Programme</a>
-    <a href="{{ route('instructor.courses.edit', $course->id) }}">Page d'accueil</a>
-    <hr>
-    <h3 class="px-3 text-white">Gestion</h3>
-    <a href="{{ route('instructor.courses.pricing', $course->id) }}">Tarification</a>
-    <a href="#">Promotions</a>
-    <a href="{{ route('instructor.courses.participants', $course->id) }}">Participants</a>
-</div>
+<nav id="sidebar">
+    <div class="p-4 pt-5">
+        <a href="{{ route('instructor.index') }}" class="btn text-white"><h5><i class="fas fa-arrow-left mr-3"></i>Retour aux cours</h5></a>
+        <hr>
+        <h4 class="btn text-white pl-0">Modification du cours</h4>
+        <ul class="list-unstyled components mb-5">
+            <li>
+                <a href="{{ route('curriculum.index', $course->id) }}">Programme</a>
+            </li>
+            <li>
+                <a href="{{ route('instructor.courses.edit', $course->id) }}">Page d'accueil du cours</a>
+            </li>
+        </ul>
+        
+        <h4 class="btn text-white pl-0">Gestion du cours</h4>
+        <ul class="list-unstyled components mb-5">
+            <li>
+                <a href="{{ route('instructor.courses.pricing', $course->id) }}">Tarification</a>
+            </li>
+            <li>
+            <a href="{{ route('instructor.courses.participants', $course->id) }}">Participants</a>
+            </li>
+        </ul>
+        <div class="d-flex justify-content-around">
+            <a class="primary-btn" href="{{ route('instructor.courses.publish', $course->id) }}">
+                <i class="fas fa-check"></i>
+                Mettre en ligne
+            </a>
+        </div>
+    </div>
+</nav>

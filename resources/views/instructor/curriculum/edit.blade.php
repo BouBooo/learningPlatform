@@ -1,8 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.instructor-app')
 
 @section('content')
-
-@include('incs.instructor.course-sidebar')
 
 <section class="contact-from-section spad">
     <div class="container">
@@ -13,7 +11,7 @@
                     @csrf 
                     <div id="form-element" class="form-group">
                         <div class="jumbotron py-3">
-                            <h4 class="my-3">Section X :</h4>
+                            <h4 class="my-3">Contenu de la section :</h4>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
