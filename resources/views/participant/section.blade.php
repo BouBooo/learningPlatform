@@ -4,7 +4,6 @@
 
 @php 
 
-$section = $course->sections[0];
 $increment = 0;
 
 @endphp 

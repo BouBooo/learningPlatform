@@ -63,6 +63,7 @@ Route::post('/instructor/course/{id}/curriculum/{section}/update', 'CurriculumCo
  */
 Route::get('/participant/courses', 'ParticipantController@courses')->name('participant.courses');
 Route::get('/participant/courses/{slug}', 'ParticipantController@course')->name('participant.course');
+Route::get('/participant/courses/{slug}/{section}', 'ParticipantController@section')->name('participant.section');
 
 
 /**

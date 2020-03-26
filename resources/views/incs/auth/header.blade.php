@@ -1,3 +1,10 @@
+
+@php 
+use App\CourseUser;
+
+$courses = CourseUser::where('user_id', Auth::user()->id)->get();
+@endphp
+
 <nav class="mainmenu mobile-menu">
     <ul>
         <li class="active">
@@ -45,8 +52,18 @@
                 Mes cours
             </a>
                 <ul class="dropdown">
-                    @foreach(Auth::user()->courses as $course)
-                    <li><a href="#">{{ $course->title }}</a></li>
+                    @foreach($courses as $item)
+                    @php 
+                    $course = $item->course;
+                    @endphp
+                    <li>
+                        <div class="d-flex  ml-2 my-3">
+                            <img class="avatar border-rounded" src="/storage/courses/{{ $course->user_id }}/{{ $course->image }}"/>
+                            <div class="user-infos">
+                                <a href="#"><small>{{ $course->title }}</small></a>
+                            </div>
+                        </div>
+                    </li>
                     @endforeach
                 </ul>
         </li>
