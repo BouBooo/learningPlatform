@@ -29,6 +29,7 @@ class CartController extends Controller
     {
         
         $course = Course::find($id);
+        
         foreach(\Cart::session(Auth::user()->id)->getContent()->toArray() as $item) {
             if($course->id === $item['id']) return redirect()->route('cart.index');
         }

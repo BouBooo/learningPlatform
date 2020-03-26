@@ -65,6 +65,9 @@ class CheckoutController extends Controller
     }
 
     public function success() {
+        if(!session()->has('success')) {
+            return redirect()->route('home');
+        }
         $order = \Cart::session(Auth::user()->id)->getContent();
         foreach(\Cart::session(Auth::user()->id)->getContent() as $cartItem) {
             \Cart::session(Auth::user()->id)->remove($cartItem->id);

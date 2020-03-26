@@ -35,8 +35,6 @@
 
       @yield('content')
 
-      @include('incs.footer')
-
       <script src="https://js.stripe.com/v3/"></script>
       @yield('stripe')
     {{-- </div> --}}

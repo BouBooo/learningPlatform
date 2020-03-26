@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class CoursesController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function index() {
         $courses = Course::where('is_published', true)->get();
         $categories = Category::all();
@@ -21,7 +25,8 @@ class CoursesController extends Controller
 
     public function show($id) {
         $course = Course::find($id);
-        if(Auth::user()->ownCourses->where('name', $course->name)->count() != 0 || Auth::user()->courses->where('name', $course->name)->count() != 0) {
+        if(Auth::user()->ownCourses->where('title', $course->title)->count() != 0 || Auth::user()->courses->where('title', $course->title)->count() != 0) {
+            die('seems to be participant');
             return redirect()->route('participant.course', $course->slug);
         }
         $recommendations = Course::where('category_id', $course->category_id)->where('id', '!=', $course->id)->where('is_published', true)->limit(3)->get();

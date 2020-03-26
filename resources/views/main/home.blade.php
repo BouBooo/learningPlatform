@@ -32,40 +32,33 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <div class="ha-pic">
-                    <img src="img/h-about.jpg" alt="">
+                <div class="ha-pic mt-5">
+                    <img src="https://blog.cursuspro.com/wp-content/uploads/2017/07/CursusPro_Tendances_e-learning.jpg" alt="">
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="ha-text">
-                    <h2>About Conference</h2>
-                    <p>When I first got into the online advertising business, I was looking for the magical
-                        combination that would put my website into the top search engine rankings, catapult me to
-                        the forefront of the minds or individuals looking to buy my product, and generally make me
-                        rich beyond my wildest dreams! After succeeding in the business for this long, I’m able to
-                        look back on my old self with this kind of thinking and shake my head.</p>
+                    <h2>A propos de Elearning</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in lacus a velit pretium finibus. In vitae dolor tellus. Aenean a mi elit. Donec suscipit efficitur lectus at condimentum. Ut non ante non eros hendrerit egestas. Etiam sit amet diam elementum, luctus turpis vel, consectetur enim. Curabitur ante mi, mollis non fringilla at, tincidunt ut lectus.</p>
                     <ul>
-                        <li><span class="icon_check"></span> Write On Your Business Card</li>
-                        <li><span class="icon_check"></span> Advertising Outdoors</li>
-                        <li><span class="icon_check"></span> Effective Advertising Pointers</li>
-                        <li><span class="icon_check"></span> Kook 2 Directory Add Url Free</li>
+                        <li><i class="fas fa-check"></i> Plus de 120 formateurs compétents</li>
+                        <li><i class="fas fa-check"></i> Plus de 500 cours disponibles</li>
+                        <li><i class="fas fa-check"></i> Contenu vidéo</li>
                     </ul>
-                    <a href="#" class="ha-btn">Discover Now</a>
+                    <a href="{{ route('courses.index') }}" class="ha-btn">Voir les cours</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Home About Section End -->
 
-<!-- Team Member Section Begin -->
 <section class="team-member-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
                     <h2>Nos formateurs</h2>
-                    <p>These are our communicators, you can see each person information</p>
+                    <p>Voici les formateurs actifs de la plateforme. Vous aussi dès à présent devenez formateurs et créez votre premier cours !</p>
                 </div>
             </div>
         </div>
@@ -211,9 +204,7 @@
         </div>
     </div>
 </section>
-<!-- Team Member Section End -->
 
-<!-- latest BLog Section Begin -->
 <section class="latest-blog spad">
     <div class="container">
         <div class="row">
@@ -239,23 +230,21 @@
         </div>
     </div>
 </section>
-<!-- latest BLog Section End -->
 
-<!-- Newslatter Section Begin -->
 <section class="newslatter-section">
     <div class="container">
         <div class="newslatter-inner set-bg" data-setbg="img/newslatter-bg.jpg">
             <div class="ni-text">
-                <h3>Subscribe Newsletter</h3>
-                <p>Subscribe to our newsletter and don’t miss anything</p>
+                <h3>S'abonner à notre newsletter</h3>
+                <p>Restez informé des derniers cours mis en ligne !</p>
             </div>
-            <form action="#" class="ni-form">
-                <input type="text" placeholder="Your email">
-                <button type="submit">Subscribe</button>
+            <form action="{{ route('newsletter.subscribe') }}" method="POST" class="ni-form">
+                @csrf
+                <input type="text" placeholder="Votre adresse email" name="email">
+                <button type="submit">M'abonner</button>
             </form>
         </div>
     </div>
 </section>
-<!-- Newslatter Section End -->
 
 @endsection

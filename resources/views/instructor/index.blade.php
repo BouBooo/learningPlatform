@@ -8,7 +8,7 @@
             <div class="col-lg-12">
                 <div class="section-title">
                     <h2>Cours</h2>
-                    <p class="mt-3">Dès maitenant, créez votre prochain cours en quelques clics !</p>
+                    <p class="mt-3">Dès maintenant, créez votre prochain cours en quelques clics !</p>
                     <a href="{{ route('instructor.courses.create') }}" class="primary-btn mt-3">
                         <i class="fas fa-plus"></i>
                         Nouveau cours
@@ -21,7 +21,7 @@
             <div class="col-md-4">
                 <div class="card-body">
                     <div class="bi-text">
-                        <h5><a class="section-title" href="#">{{ $course->title }}</a></h5>
+                        <h5><a class="btn font-weight-bold" href="#">{{ $course->title }}</a></h5>
                         <span><i class="fa fa-clock-o"></i> {{ date('d/m/Y', strtotime($course->created_at)) }}</span>
                     </div>
                 </div>

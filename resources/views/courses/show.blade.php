@@ -2,7 +2,6 @@
 
 @section('content')
 
-<!-- Blog Details Hero Section Begin -->
 <section class="blog-hero-section set-bg pb-5" data-setbg="{{ asset('img/blog/blog-details/blog-details-hero.jpg') }}">
     <div class="container">
         <div class="row">
@@ -13,17 +12,15 @@
                     <h2>{{ $course->title }}</h2>
                     <ul>
                         <li><span>Par <strong>{{ $course->user->name }}</strong></span></li>
-                        <li>February 21, 2019</li>
-                        <li>No Comments</li>
+                        <li>{{ $course->created_at }}</li>
+                        <li>Mis à jour le {{ $course->updated_at }}</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Blog Details Hero Section End -->
 
-<!-- Blog Details Section Begin -->
 <section class="blog-details-section">
     <div class="container">
         <div class="row">

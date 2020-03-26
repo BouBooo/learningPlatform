@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Payment;
 use App\Section;
 use App\Category;
 use Cocur\Slugify\Slugify;
@@ -109,8 +110,10 @@ class InstructorController extends Controller
 
     public function participants($id) {
         $course = Course::find($id);
+        $participants = Payment::where('course_id', $course->id)->get();
         return view('instructor.participants', [
-            'course' => $course
+            'course' => $course,
+            'participants' => $participants
         ]);
     }
 

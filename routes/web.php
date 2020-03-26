@@ -35,6 +35,12 @@ Route::get('/courses/category/{id}', 'CoursesController@category')->name('course
 
 
 /**
+ * Newsletter 
+ */
+Route::post('/newsletter/subscribe', 'NewsletterController@subscribe')->name('newsletter.subscribe');
+
+
+/**
  * Instructor Routes
  */
 Route::get('/instructor/courses', 'InstructorController@index')->name('instructor.index');
