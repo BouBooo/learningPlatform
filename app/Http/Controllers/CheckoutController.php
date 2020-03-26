@@ -41,7 +41,6 @@ class CheckoutController extends Controller
                 $amount = \Cart::session(Auth::user()->id)->getTotal();
                 $instructor_part = $this->paymentManager->getInstructorPart(\Cart::session(Auth::user()->id)->getTotal());
                 $elearning_part = $this->paymentManager->getElearningPart(\Cart::session(Auth::user()->id)->getTotal());
-                // dd($amount, $instructor_part, $elearning_part);
 
                 CourseUser::create([
                     'user_id' => Auth::user()->id,
