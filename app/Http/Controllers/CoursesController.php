@@ -6,6 +6,7 @@ use App\User;
 use App\Course;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CoursesController extends Controller
 {
@@ -20,6 +21,9 @@ class CoursesController extends Controller
 
     public function show($id) {
         $course = Course::find($id);
+        if(Auth::user()->ownCourses->where('name', $course->name)->count() != 0 || Auth::user()->courses->where('name', $course->name)->count() != 0) {
+            return redirect()->route('participant.course', $course->slug);
+        }
         $recommendations = Course::where('category_id', $course->category_id)->where('id', '!=', $course->id)->where('is_published', true)->limit(3)->get();
         return view('courses.show', [
             'course' => $course,

@@ -15,6 +15,11 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('course_id');
+            $table->float('amount');
+            $table->float('instructor_part');
+            $table->float('elearning_part');
+            $table->string('email');
             $table->timestamps();
         });
     }

@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Payment;
 use App\CourseUser;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Managers\PaymentManager;
 
 class CheckoutController extends Controller
 {
+    public function __construct(PaymentManager $paymentManager) {
+        $this->paymentManager = $paymentManager;
+    }
+
     public function paiement() {
         $cart = \Cart::session(Auth::user()->id)->getContent();
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
@@ -32,9 +38,22 @@ class CheckoutController extends Controller
             ]); 
 
             foreach(\Cart::session(Auth::user()->id)->getContent() as $item) {
+                $amount = \Cart::session(Auth::user()->id)->getTotal();
+                $instructor_part = $this->paymentManager->getInstructorPart(\Cart::session(Auth::user()->id)->getTotal());
+                $elearning_part = $this->paymentManager->getElearningPart(\Cart::session(Auth::user()->id)->getTotal());
+                // dd($amount, $instructor_part, $elearning_part);
+
                 CourseUser::create([
                     'user_id' => Auth::user()->id,
                     'course_id' => $item->model->id
+                ]);
+
+                Payment::create([
+                    'course_id' => $item->model->id,
+                    'amount' => $amount,
+                    'instructor_part' => $instructor_part,
+                    'elearning_part' => $elearning_part,
+                    'email' => Auth::user()->email
                 ]);
             }
         

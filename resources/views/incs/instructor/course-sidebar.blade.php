@@ -21,11 +21,18 @@
             <a href="{{ route('instructor.courses.participants', $course->id) }}">Participants</a>
             </li>
         </ul>
+        @if(!$course->is_published)
         <div class="d-flex justify-content-around">
             <a class="primary-btn" href="{{ route('instructor.courses.publish', $course->id) }}">
                 <i class="fas fa-check"></i>
                 Mettre en ligne
             </a>
         </div>
+        @else 
+        <p class="alert alert-success">
+            <i class="fas fa-check"></i>
+            Votre cours est en ligne
+        </p>
+        @endif
     </div>
 </nav>
