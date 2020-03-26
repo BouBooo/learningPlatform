@@ -19,16 +19,34 @@ class CoursesSeeder extends Seeder
         $slugify = new Slugify();
 
         $user = new User();
-        $user->email = 'florent.nicolas@ynov.com';
-        $user->name = 'Florent NICOLAS';
+        $user->email = 'robert@email.com';
+        $user->name = 'Robert ROBERT';
+        $user->avatar = "https://uploads-ssl.webflow.com/5bddf05642686caf6d17eb58/5dc2fd00c29f7abeadd7c332_gPZwCbdS.jpg";
         $user->password = Hash::make('password');
         $user->save();
 
         $user = new User();
-        $user->email = 'axel.paris@ynov.com';
-        $user->name = 'Axel PARIS';
+        $user->email = 'justine@email.com';
+        $user->name = 'Justine JUSTINE';
+        $user->avatar = "https://uploads-ssl.webflow.com/5bddf05642686caf6d17eb58/5dc2fd00c29f7abeadd7c332_gPZwCbdS.jpg";
         $user->password = Hash::make('password');
         $user->save();
+
+        $user = new User();
+        $user->email = 'tom@email.com';
+        $user->name = 'Tom TOM';
+        $user->avatar = "https://uploads-ssl.webflow.com/5bddf05642686caf6d17eb58/5dc2fd00c29f7abeadd7c332_gPZwCbdS.jpg";
+        $user->password = Hash::make('password');
+        $user->save();
+
+        $user = new User();
+        $user->email = 'jeff@email.com';
+        $user->name = 'Jeff JEFF';
+        $user->avatar = "https://uploads-ssl.webflow.com/5bddf05642686caf6d17eb58/5dc2fd00c29f7abeadd7c332_gPZwCbdS.jpg";
+        $user->password = Hash::make('password');
+        $user->save();
+
+        
 
         // $course = new Course();
         // $course->title = 'Laravel : Créer un site e-commerce de A à Z';

@@ -10792,3 +10792,10 @@ ol {
   .footer p {
 	color: rgba(255, 255, 255, 0.5); }
   
+
+.avatar-profile {
+	padding-right: 0;
+	margin-left: 2em;
+	max-width: 80px;
+	max-height: 80px;
+}

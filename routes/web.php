@@ -33,13 +33,6 @@ Route::get('/courses', 'CoursesController@index')->name('courses.index');
 Route::get('/courses/{id}', 'CoursesController@show')->name('courses.show');
 Route::get('/courses/category/{id}', 'CoursesController@category')->name('courses.category');
 
-
-/**
- * Newsletter 
- */
-Route::post('/newsletter/subscribe', 'NewsletterController@subscribe')->name('newsletter.subscribe');
-
-
 /**
  * Instructor Routes
  */
@@ -51,11 +44,11 @@ Route::post('/instructor/course/store', 'InstructorController@store')->name('ins
 Route::get('/instructor/course/{id}/pricing', 'InstructorController@pricing')->name('instructor.courses.pricing');
 Route::post('/instructor/course/{id}/pricing/store', 'InstructorController@pricingStore')->name('instructor.courses.pricing.store');
 Route::get('/instructor/course/{id}/publish', 'InstructorController@publish')->name('instructor.courses.publish');
+Route::get('/instructor/course/{id}/participants', 'InstructorController@participants')->name('instructor.courses.participants');
 
 /**
  * Course curriculum
  */
-Route::get('/instructor/course/{id}/participants', 'InstructorController@participants')->name('instructor.courses.participants');
 Route::get('/instructor/course/{id}/curriculum', 'CurriculumController@index')->name('curriculum.index');
 Route::get('/instructor/course/{id}/curriculum/add', 'CurriculumController@create')->name('curriculum.create');
 Route::post('/instructor/course/{id}/curriculum/store', 'CurriculumController@store')->name('curriculum.store');
@@ -100,3 +93,8 @@ Route::get('/forLater/{course}/switch', 'SaveForLaterController@switchToCart')->
 Route::get('/checkout', 'CheckoutController@paiement')->name('checkout.paiement');
 Route::post('/checkout/charge', 'CheckoutController@charge')->name('checkout.charge');
 Route::get('/checkout/success', 'CheckoutController@success')->name('checkout.success');
+
+/**
+ * Newsletter 
+ */
+Route::post('/newsletter/subscribe', 'NewsletterController@subscribe')->name('newsletter.subscribe');

@@ -22,7 +22,7 @@
                     <li>
                     <li>
                         <a class="nav-link" href="#">
-                            <img class="w-25 border-rounded rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgdfs0SKbDsFSmkr7s8knHkyavkzyPxhzCUbewu_fD9wR5pDFH"/>
+                        <img class="w-25 border-rounded rounded-circle" src="{{ Auth::user()->avatar }}"/>
                          </a>
                              <ul class="dropdown">
                                  <li>

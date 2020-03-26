@@ -2,13 +2,11 @@
 
 @section('content')
 
-<section class="blog-hero-section set-bg pb-5" data-setbg="{{ asset('img/blog/blog-details/blog-details-hero.jpg') }}">
+<section class="blog-hero-section set-bg pb-5" data-setbg="/storage/courses/{{ $course->user_id }}/{{ $course->image }}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="bh-text">
-                    <a href="https://www.youtube.com/watch?v=EzKkl64rRbM" class="play-btn video-popup"><i
-                            class="fa fa-play"></i></a>
                     <h2>{{ $course->title }}</h2>
                     <ul>
                         <li><span>Par <strong>{{ $course->user->name }}</strong></span></li>
@@ -34,13 +32,6 @@
                             </div>
                         </div>
                         <h4 class="my-5">{{ $course->subtitle }}</h4>
-                    </div>
-                    <div class="bd-quote">
-                        <p>As a result of your work, the senior leadership team walked away as a cohesive unit,
-                            re-energized and more hopeful. We are committed to a new future which we now own. You
-                            helped us learn how to be resilient change masters."</p>
-                        <span>John Smith</span>
-                        <img src="img/quote-left.png" alt="">
                     </div>
                     <div class="bd-more-text">
                         <p>{{ $course->description }}</p>
